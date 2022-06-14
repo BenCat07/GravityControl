@@ -21,7 +21,7 @@ repositories {
 }
 
 dependencies {
-  compileOnly("io.papermc.paper", "paper-api", "1.18.2-R0.1-SNAPSHOT")
+  compileOnly("io.papermc.paper", "paper-api", "1.17.1-R0.1-SNAPSHOT")
   compileOnly("com.sk89q.worldguard", "worldguard-bukkit", "7.0.7")
   implementation("org.bstats", "bstats-bukkit", "3.0.0")
 }
@@ -58,7 +58,7 @@ tasks {
   }
 
   runServer {
-    minecraftVersion("1.18.2")
+    minecraftVersion("1.17.1")
   }
 
   shadowJar {

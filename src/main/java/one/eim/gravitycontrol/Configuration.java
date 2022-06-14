@@ -72,7 +72,7 @@ class Configuration {
 
     for (final @Subst("minecraft:overworld") String keyString : config.getStringList(Fields.worlds)) {
       if (keyString.equals("*")) {
-        this.plugin.getServer().getWorlds().forEach(world -> keys.add(world.key()));
+        this.plugin.getServer().getWorlds().forEach(world -> keys.add(world.getKey()));
         return keys;
       }
 
@@ -102,29 +102,29 @@ class Configuration {
           continue;
         }
 
-        newWorlds.add(world.key().asString());
+        newWorlds.add(world.getKey().asString());
       }
     }
 
     final List<String> newMaterials = new ArrayList<>();
 
     if (config.getBoolean("enabled-blocks.sand")) {
-      newMaterials.add(Material.SAND.key().asString());
+      newMaterials.add(Material.SAND.getKey().asString());
     }
     if (config.getBoolean("enabled-blocks.red-sand")) {
-      newMaterials.add(Material.RED_SAND.key().asString());
+      newMaterials.add(Material.RED_SAND.getKey().asString());
     }
     if (config.getBoolean("enabled-blocks.anvil")) {
-      MaterialSetTag.ANVIL.getValues().forEach(material -> newMaterials.add(material.key().asString()));
+      MaterialSetTag.ANVIL.getValues().forEach(material -> newMaterials.add(material.getKey().asString()));
     }
     if (config.getBoolean("enabled-blocks.dragon-egg")) {
-      newMaterials.add(Material.DRAGON_EGG.key().asString());
+      newMaterials.add(Material.DRAGON_EGG.getKey().asString());
     }
     if (config.getBoolean("enabled-blocks.gravel")) {
-      newMaterials.add(Material.GRAVEL.key().asString());
+      newMaterials.add(Material.GRAVEL.getKey().asString());
     }
     if (config.getBoolean("enabled-blocks.concrete-powder")) {
-      MaterialTags.CONCRETE_POWDER.getValues().forEach(material -> newMaterials.add(material.key().asString()));
+      MaterialTags.CONCRETE_POWDER.getValues().forEach(material -> newMaterials.add(material.getKey().asString()));
     }
 
     config.set("enabled-blocks", null);
@@ -134,7 +134,7 @@ class Configuration {
     config.set(Fields.regions, List.of("*"));
     config.set(Fields.updateChecker, true);
 
-    config.setComments(Fields._version, List.of(
+    /*config.setComments(Fields._version, List.of(
       "Do not touch. Used for configuration migration."
     ));
     config.setComments(Fields.worlds, List.of(
@@ -153,7 +153,7 @@ class Configuration {
     ));
     config.setComments(Fields.updateChecker, List.of(
       "If GravityControl should check for updates on startup"
-    ));
+    ));*/
 
     try {
       config.save(this.plugin.getDataFolder().toPath().resolve("config.yml").toFile());

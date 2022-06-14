@@ -31,7 +31,7 @@ public class GravityListener implements Listener {
   public void onEntityChangeBlock(final EntityChangeBlockEvent event) {
     if (event.getTo() == Material.AIR
       || !(event.getEntity() instanceof final FallingBlock falling)
-      || !this.plugin.config.worlds.contains(event.getBlock().getWorld().key())
+      || !this.plugin.config.worlds.contains(event.getBlock().getWorld().getKey())
       || !this.plugin.config.blocks.contains(falling.getBlockData().getMaterial())
     ) {
       return;
